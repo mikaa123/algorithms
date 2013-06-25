@@ -99,7 +99,7 @@ MinHeap.prototype.remove = function () {
 
   var result = this.heap.shift();
 
-  if (this.heap.length > 2) {
+  if (this.heap.length) {
     this.heap.unshift(this.heap.pop());
     minHeapify(this.heap, 0);
   }
