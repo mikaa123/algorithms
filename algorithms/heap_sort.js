@@ -1,3 +1,19 @@
+// michael sokol - 2013
+
+// heapsort was first published in 'Communication of the ACM' vol 7,
+// in 1964. it makes heavy use of the binary heap data structure.
+
+// a binary heap retrieve the smallest element with a complexity of O(log n).
+// heapsort will use the binary heap's `remove` function n times, giving it
+// an overall complexity of O(n log n).
+
+// heapsort uses only a constant amount of space, making it efficient for
+// embedded systems with small memory available. this contrasts with merge sort
+// whose memory consuption grows linearly with the input's size.
+
+// the following algorithm implements heapsort with expressivity of the code in
+// mind, not performance.
+
 function minHeapify(A, i) {
 
 // the minHeapify function re-arranges the nodes of a heap for `i`
@@ -105,6 +121,13 @@ MinHeap.prototype.insert = function (key) {
 };
 
 function heapSort(A) {
+
+// sorts the given input by making use of a binary min-heap.
+// when the array is sorted, it is returned.
+
+// the first step is to turn the given input into a binary min-heap.
+// to do so, we use the MinHeap class defined above.
+
   var heap = new MinHeap(A),
       key,
       result = [];
@@ -113,6 +136,10 @@ function heapSort(A) {
   if (!A.length) return A;
 
   while (key = heap.remove()) {
+
+// now that we have a binary min-heap, we simply remove the smallest
+// item and push it into the result array.
+
     result.push(key);
   }
 
