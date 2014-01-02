@@ -4,7 +4,6 @@
 
 (require-extension FNVHash)
 (require-extension PJWHash)
-(require-extension readline)
 
 ; The bit-vector that's gonna be used as the filter.
 (define bloom-array (make-vector 32 0))
@@ -33,3 +32,10 @@
 			((= (vector-ref bloom-array (hash2 str)) 0) (print "Nope."))
 			(else (print "Maybe.")))))
 
+; Returns the probability of a false positive with the bloom filter.
+; .parameter m The size of the bit vector.
+; .parameter k The number of hash functions.
+; .parameter n the number of element in the set.
+(define false-positive-probability
+		(lambda (m k n)
+				(expt (- 1 (exp (/ (* (- k) n) m))) k)))
