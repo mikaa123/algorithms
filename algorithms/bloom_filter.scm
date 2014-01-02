@@ -29,7 +29,7 @@
 (define is-available
 	(lambda (str)
 		(cond
-			((= (vector-ref bloom-array (hash1 str)) 1) (print "maybe!"))
-			((= (vector-ref bloom-array (hash2 str)) 1) (print "maybe!"))
-			(else (print "nope.")))))
+			((= (vector-ref bloom-array (hash1 str)) 0) (print "Nope."))
+			((= (vector-ref bloom-array (hash2 str)) 0) (print "Nope."))
+			(else (print "Maybe.")))))
 
